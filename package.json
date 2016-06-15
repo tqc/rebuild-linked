@@ -1,0 +1,28 @@
+{
+  "name": "rebuild-linked",
+  "version": "1.0.0",
+  "description": "Rebuild any ES6 modules included using npm link",
+  "repository": {
+    "url": "http://github.com/tqc/plainish-text"
+  },
+  "scripts": {
+    "test": "eslint .",
+    "compile": "babel src -d dist"
+  },
+  "main": "src/index.js",
+  "esnext:main": "src/index.js",
+  "keywords": [],
+  "author": "Tom Clarkson",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.9.0",
+    "babel-core": "^6.9.1",
+    "babel-eslint": "^6.0.4",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.7.4",
+    "eslint": "^2.1.11",
+    "eslint-config-tqc": "^1.0.3"
+  },
+  "engines": {
+    "node": "^4.2.2"
+  }
+}
