@@ -1,6 +1,6 @@
 {
   "name": "rebuild-linked",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Rebuild any ES6 modules included using npm link",
   "repository": {
     "url": "http://github.com/tqc/plainish-text"
@@ -9,7 +9,7 @@
     "test": "eslint .",
     "compile": "babel src -d dist"
   },
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "esnext:main": "src/index.js",
   "keywords": [],
   "author": "Tom Clarkson",

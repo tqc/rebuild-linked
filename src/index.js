@@ -5,6 +5,7 @@ var npmPath = process.platform == "win32" ? "npm.cmd" : "npm";
 
 function getModules(basePath) {
     var result = [];
+    var names = [];
     var nmp = path.resolve(basePath, "node_modules");
     if (!fs.existsSync(nmp)) return result;
     var allModules = fs.readdirSync(nmp);
@@ -25,14 +26,18 @@ function getModules(basePath) {
             var pkg = JSON.parse(fs.readFileSync(pkgPath, "utf8"));
             if (!pkg.scripts) continue;
             //if (!pkg.scripts.compile) continue;
+            names.push(mn);
             result.push({
                 name: mn,
                 path: fs.realpathSync(p),
                 buildNeeded: !!pkg.scripts.compile
             });
-            result.push.apply(result, getModules(p));
+            var submodules = getModules(p).filter(m => names.indexOf(m.name) < 0);
+            names.push.apply(names, submodules.map(m => m.name));
+            result.push.apply(result, submodules);
         }
     }
+
     return result;
 }
 
